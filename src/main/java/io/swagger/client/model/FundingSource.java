@@ -7,6 +7,8 @@ import java.util.Date;
 
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.swagger.client.object.IavAccountHolders;
+
 import java.util.ArrayList;
 
 
@@ -24,6 +26,7 @@ public class FundingSource  {
   private Object balance = null;
   private Boolean removed = null;
   private String locationHeader;
+  private IavAccountHolders iavAccountHolders = null;
 
 
   
@@ -146,7 +149,20 @@ public class FundingSource  {
   public String getLocationHeader() { return locationHeader; }
   public void setLocationHeader(ArrayList<String> locationHeader) { this.locationHeader = locationHeader.get(0); }
 
-  @Override
+
+  /**
+   **/
+  @ApiModelProperty(required = true, value = "")
+  @JsonProperty("iavAccountHolders")
+  public IavAccountHolders getIavAccountHolders() {
+    return iavAccountHolders;
+  }
+
+  public void setIavAccountHolders(IavAccountHolders iavAccountHolders) {
+    this.iavAccountHolders = iavAccountHolders;
+  }
+
+    @Override
   public String toString()  {
     StringBuilder sb = new StringBuilder();
     sb.append("class FundingSource {\n");
@@ -160,7 +176,9 @@ public class FundingSource  {
     sb.append("  created: ").append(created).append("\n");
     sb.append("  balance: ").append(balance).append("\n");
     sb.append("  removed: ").append(removed).append("\n");
+    sb.append("  iavAccountHolders: ").append(iavAccountHolders).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
+
 }
