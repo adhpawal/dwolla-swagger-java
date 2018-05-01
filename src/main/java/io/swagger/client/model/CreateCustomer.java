@@ -30,6 +30,7 @@ public class CreateCustomer  {
   private String doingBusinessAs = null;
   private String website = null;
   private String locationHeader;
+  private BeneficialOwner controller;
 
 
   
@@ -260,7 +261,17 @@ public class CreateCustomer  {
     this.website = website;
   }
 
-  
+  /**
+   **/
+  @ApiModelProperty(value = "")
+  @JsonProperty("controller")
+  public BeneficialOwner getController() {
+    return controller;
+  }
+
+  public void setController(BeneficialOwner controller) {
+    this.controller = controller;
+  }
 
 
   /**
@@ -296,6 +307,7 @@ public class CreateCustomer  {
     sb.append("  ein: ").append(ein).append("\n");
     sb.append("  doingBusinessAs: ").append(doingBusinessAs).append("\n");
     sb.append("  website: ").append(website).append("\n");
+    sb.append("  controller:").append("\n").append("\t").append(controller.toString()).append("\n");
     sb.append("}\n");
     return sb.toString();
   }
