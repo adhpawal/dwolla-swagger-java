@@ -78,6 +78,81 @@ public class BeneficialOwnersApi {
     }
 
     /**
+     * Get a beneficial owner by id
+     *
+     * @param id Id of beneficial owner to get.
+     * @return BeneficialOwner
+     */
+    public BeneficialOwner getBeneficialOwner (String id) throws ApiException {
+        Object postBody = null;
+
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException(400, "Missing the required parameter 'id' when calling getBeneficialOwner");
+        }
+
+
+
+        // if a URL is provided, extract the ID
+        URL u;
+        try {
+            u = new URL(id);
+            id = id.substring(id.lastIndexOf('/') + 1);
+        }
+        catch (MalformedURLException mue) {
+            u = null;
+        }
+
+
+        // create path and map variables
+        String path = "/beneficial-owners/{id}".replaceAll("\\{format\\}","json")
+                .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+
+        // query params
+        Map<String, String> queryParams = new HashMap<String, String>();
+        Map<String, String> headerParams = new HashMap<String, String>();
+        Map<String, String> formParams = new HashMap<String, String>();
+
+
+
+
+
+        final String[] accepts = {
+                "application/vnd.dwolla.v1.hal+json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+
+        final String[] contentTypes = {
+                "application/vnd.dwolla.v1.hal+json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        if(contentType.startsWith("multipart/form-data")) {
+            boolean hasFields = false;
+            FormDataMultiPart mp = new FormDataMultiPart();
+
+            if(hasFields)
+                postBody = mp;
+        }
+        else {
+
+        }
+
+        try {
+            String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+            if(response != null){
+                return (BeneficialOwner) apiClient.deserialize(response, "", BeneficialOwner.class);
+            }
+            else {
+                return null;
+            }
+        } catch (ApiException ex) {
+            throw ex;
+        }
+    }
+
+
+    /**
      * Update beneficial owner record. Beneficial owner's record can be updated only if verification status is incomplete.
      *
      * @param body BeneficialOwner to update.
