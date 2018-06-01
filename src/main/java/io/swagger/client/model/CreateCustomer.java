@@ -1,6 +1,7 @@
 package io.swagger.client.model;
 
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.*;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
@@ -8,6 +9,7 @@ import java.util.ArrayList;
 
 
 @ApiModel(description = "")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateCustomer  {
   
   private String firstName = null;
