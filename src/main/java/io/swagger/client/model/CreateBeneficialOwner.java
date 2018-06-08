@@ -14,7 +14,6 @@ public class CreateBeneficialOwner {
     private String ssn = null;
     private String dateOfBirth = null;
     private Address address = null;
-    private Passport passport = null;
 
     /**
      **/
@@ -71,17 +70,6 @@ public class CreateBeneficialOwner {
         this.address = address;
     }
 
-    /**
-     **/
-    @ApiModelProperty(value = "")
-    @JsonProperty("passport")
-    public Passport getPassport() {
-        return passport;
-    }
-    public void setPassport(Passport passport) {
-        this.passport = passport;
-    }
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -91,7 +79,6 @@ public class CreateBeneficialOwner {
         sb.append("  ssn: ").append(ssn).append("\n");
         sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
         sb.append("  address: ").append(address).append("\n");
-        sb.append("  passport: ").append(passport).append("\n");
         sb.append("}\n");
         return sb.toString();
     }

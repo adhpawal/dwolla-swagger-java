@@ -24,7 +24,7 @@ public class BeneficialOwner {
     private String dateOfBirth = null;
     private Address address = null;
     private Passport passport = null;
-    private String status = null;
+    private String verificationStatus = null;
     private String locationHeader;
 
     /**
@@ -140,12 +140,13 @@ public class BeneficialOwner {
     /**
      **/
     @ApiModelProperty(required = true, value = "")
-    @JsonProperty("status")
-    public String getStatus() {
-        return status;
+    @JsonProperty("verificationStatus")
+    public String getVerificationStatus() {
+        return verificationStatus;
     }
-    public void setStatus(String status) {
-        this.status = status;
+
+    public void setVerificationStatus(String verificationStatus) {
+        this.verificationStatus = verificationStatus;
     }
 
     /**
@@ -171,8 +172,7 @@ public class BeneficialOwner {
         sb.append("  ssn: ").append(ssn).append("\n");
         sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
         sb.append("  address: ").append(address).append("\n");
-        sb.append("  passport: ").append(passport).append("\n");
-        sb.append("  status: ").append(status).append("\n");
+        sb.append("  status: ").append(verificationStatus).append("\n");
         sb.append("}\n");
         return sb.toString();
     }
