@@ -5,11 +5,13 @@ import io.swagger.client.ApiClient;
 import io.swagger.client.ApiException;
 import io.swagger.client.Configuration;
 import io.swagger.client.model.BeneficialOwner;
+import io.swagger.client.model.CertifyBeneficialOwner;
 import io.swagger.client.model.CreateBeneficialOwner;
 import io.swagger.client.model.CreateCustomer;
 import io.swagger.client.model.Customer;
 import io.swagger.client.model.Unit$;
 import io.swagger.client.model.UpdateCustomer;
+import sun.util.resources.et.CalendarData_et;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -153,6 +155,47 @@ public class BeneficialOwnersApi {
 
 
     /**
+     * Change the certification status of business verified Customer account
+     *
+     * @param body CertifyBeneficialOwner.
+     * @param customerId Id of associated beneficial-owners to certify.
+     * @return CertifyBeneficialOwner
+     */
+    public CertifyBeneficialOwner certify (CertifyBeneficialOwner body, String customerId) throws ApiException {
+        Object postBody = body;
+
+        // create path and map variables
+        String path = "/customers/{id}/beneficial-ownership".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));;
+
+        // query params
+        Map<String, String> queryParams = new HashMap<String, String>();
+        Map<String, String> headerParams = new HashMap<String, String>();
+        Map<String, String> formParams = new HashMap<String, String>();
+
+        final String[] accepts = {
+                "application/vnd.dwolla.v1.hal+json"
+        };
+        final String accept = apiClient.selectHeaderAccept(accepts);
+
+        final String[] contentTypes = {
+                "application/vnd.dwolla.v1.hal+json"
+        };
+        final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+        try {
+            String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+            if(response != null){
+                return (CertifyBeneficialOwner) apiClient.deserialize(response, "", CertifyBeneficialOwner.class);
+            }
+            else {
+                return null;
+            }
+        } catch (ApiException ex) {
+            throw ex;
+        }
+    }
+
+    /**
      * Update beneficial owner record. Beneficial owner's record can be updated only if verification status is incomplete.
      *
      * @param body BeneficialOwner to update.
@@ -163,7 +206,8 @@ public class BeneficialOwnersApi {
         Object postBody = body;
 
         // create path and map variables
-        String path = "beneficial-owners/{id}".replaceAll("\\{format\\}","json");
+        String path = "/beneficial-owners/{id}".replaceAll("\\{format\\}","json")
+                .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
 
         // query params
         Map<String, String> queryParams = new HashMap<String, String>();
