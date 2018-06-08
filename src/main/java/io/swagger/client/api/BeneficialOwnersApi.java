@@ -47,7 +47,7 @@ public class BeneficialOwnersApi {
         Object postBody = body;
 
         // create path and map variables
-        String path = "/customers/{id}/beneficial-owners".replaceAll("\\{format\\}","json");
+        String path = "/customers/{id}/beneficial-owners".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));;
 
         // query params
         Map<String, String> queryParams = new HashMap<String, String>();
