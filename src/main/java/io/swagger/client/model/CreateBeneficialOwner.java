@@ -1,10 +1,12 @@
 package io.swagger.client.model;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(description = "")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CreateBeneficialOwner {
 
     private String firstName = null;
