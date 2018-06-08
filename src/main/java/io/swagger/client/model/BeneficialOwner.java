@@ -172,6 +172,7 @@ public class BeneficialOwner {
         sb.append("  ssn: ").append(ssn).append("\n");
         sb.append("  dateOfBirth: ").append(dateOfBirth).append("\n");
         sb.append("  address: ").append(address).append("\n");
+        sb.append("  passport: ").append(passport).append("\n");
         sb.append("  status: ").append(verificationStatus).append("\n");
         sb.append("}\n");
         return sb.toString();
