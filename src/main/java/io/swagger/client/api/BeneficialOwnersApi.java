@@ -202,7 +202,7 @@ public class BeneficialOwnersApi {
      * @param id Id of beneficial-owner to update.
      * @return BeneficialOwner
      */
-    public BeneficialOwner updateCustomer (CreateBeneficialOwner body, String id) throws ApiException {
+    public BeneficialOwner updateBeneficialOwner (CreateBeneficialOwner body, String id) throws ApiException {
         Object postBody = body;
 
         // create path and map variables
