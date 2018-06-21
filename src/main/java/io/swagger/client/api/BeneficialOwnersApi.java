@@ -49,7 +49,7 @@ public class BeneficialOwnersApi {
         Object postBody = body;
 
         // create path and map variables
-        String path = "/customers/{id}/beneficial-owners".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));;
+        String path = "/customers/{id}/beneficial-owners".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));
 
         // query params
         Map<String, String> queryParams = new HashMap<String, String>();
@@ -159,13 +159,13 @@ public class BeneficialOwnersApi {
      *
      * @param body CertifyBeneficialOwner.
      * @param customerId Id of associated beneficial-owners to certify.
-     * @return CertifyBeneficialOwner
+     * @return Unit$
      */
-    public CertifyBeneficialOwner certify (CertifyBeneficialOwner body, String customerId) throws ApiException {
+    public Unit$ certify (CertifyBeneficialOwner body, String customerId) throws ApiException {
         Object postBody = body;
 
         // create path and map variables
-        String path = "/customers/{id}/beneficial-ownership".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));;
+        String path = "/customers/{id}/beneficial-ownership".replaceAll("\\{format\\}","json").replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(customerId));
 
         // query params
         Map<String, String> queryParams = new HashMap<String, String>();
@@ -185,7 +185,7 @@ public class BeneficialOwnersApi {
         try {
             String response = apiClient.invokeAPI(path, "POST", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
             if(response != null){
-                return (CertifyBeneficialOwner) apiClient.deserialize(response, "", CertifyBeneficialOwner.class);
+                return (Unit$) apiClient.deserialize(response, "", Unit$.class);
             }
             else {
                 return null;
@@ -207,7 +207,7 @@ public class BeneficialOwnersApi {
 
         // create path and map variables
         String path = "/beneficial-owners/{id}".replaceAll("\\{format\\}","json")
-                .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id.toString()));
+                .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id));
 
         // query params
         Map<String, String> queryParams = new HashMap<String, String>();
