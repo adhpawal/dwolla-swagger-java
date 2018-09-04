@@ -412,7 +412,65 @@ public class FundingsourcesApi {
       throw ex;
     }
   }
-  
+
+  /**
+   *
+   * @param id {funding source id}
+   * @return funding source information {@link FundingSourceAccountInformation}
+   * @throws ApiException
+   * @author pragya
+   */
+  public FundingSourceAccountInformation fetchAccountInformation (String id) throws ApiException {
+    Object postBody = null;
+
+    // verify the required parameter 'id' is set
+    if (id == null) {
+      throw new ApiException(400, "Missing the required parameter 'id' when calling id");
+    }
+
+    // if a URL is provided, extract the ID
+    URL u;
+    try {
+      u = new URL(id);
+      id = id.substring(id.lastIndexOf('/') + 1);
+    }
+    catch (MalformedURLException mue) {
+      u = null;
+    }
+
+    // create path and map variables
+    String path = "/funding-sources/{id}/ach-routing".replaceAll("\\{format\\}","json")
+            .replaceAll("\\{" + "id" + "\\}", apiClient.escapeString(id));
+
+    // query params
+    Map<String, String> queryParams = new HashMap<String, String>();
+    Map<String, String> headerParams = new HashMap<String, String>();
+    Map<String, String> formParams = new HashMap<String, String>();
+
+    final String[] accepts = {
+            "application/vnd.dwolla.v1.hal+json"
+    };
+    final String accept = apiClient.selectHeaderAccept(accepts);
+
+    final String[] contentTypes = {
+
+    };
+    final String contentType = apiClient.selectHeaderContentType(contentTypes);
+
+    try {
+      String response = apiClient.invokeAPI(path, "GET", queryParams, postBody, headerParams, formParams, accept, contentType, this.authNames);
+      if(response != null){
+        return (FundingSourceAccountInformation) apiClient.deserialize(response, "", FundingSourceAccountInformation.class);
+      }
+      else {
+        return null;
+      }
+    } catch (ApiException ex) {
+      throw ex;
+    }
+  }
+
+
   /**
    * Remove a funding source.
    * 
