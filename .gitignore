@@ -65,6 +65,7 @@ modules.xml
 
 # Sonarlint plugin
 .idea/sonarlint
+.idea/sonarIssues.xml
 
 ### Java ###
 # Compiled class file
