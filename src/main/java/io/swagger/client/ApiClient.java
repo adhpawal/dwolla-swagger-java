@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.*;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
+import com.jayway.jsonpath.JsonPath;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.config.ClientConfig;
@@ -454,9 +455,9 @@ public class ApiClient {
       if(response.hasEntity()) {
         try{
           respBody = String.valueOf(response.getEntity(String.class));
-          message = respBody;
-        }
-        catch (RuntimeException e) {
+          List<String> messageList = JsonPath.parse(respBody).read("$..errors..message");//, "$.response.data[*].segment_id");
+          message = messageList.isEmpty() ? message : messageList.get(0) ;
+        } catch (RuntimeException e) {
           // e.printStackTrace();
         }
       }
