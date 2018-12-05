@@ -455,7 +455,7 @@ public class ApiClient {
       if(response.hasEntity()) {
         try{
           respBody = String.valueOf(response.getEntity(String.class));
-          List<String> messageList = JsonPath.parse(respBody).read("$..errors..message");//, "$.response.data[*].segment_id");
+          List<String> messageList = JsonPath.parse(respBody).read("$..errors..message");
           message = messageList.isEmpty() ? message : messageList.get(0) ;
         } catch (RuntimeException e) {
           // e.printStackTrace();
